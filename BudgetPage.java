@@ -26,7 +26,7 @@ public class BudgetPage extends JPanel {
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 48));
 		lblNewLabel.setBounds(32, 24, 420, 72);
 		add(lblNewLabel);
-		
+		/*
 		JButton btnNewButton = new JButton("ADD INCOME");
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
