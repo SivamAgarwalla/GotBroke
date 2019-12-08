@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +21,7 @@ public class GotBroke {
 	private static JPanel bsPanel;
 	private static String userName;
 	private static String budgetMonth;
+	private static DecimalFormat df = new DecimalFormat("0.00");
 	
 	public static void main(String[] args)
 	{
@@ -56,7 +58,6 @@ public class GotBroke {
 		
 		//Labels for the BudgetPage
 		JLabel bpLabel1 = new JLabel();
-		//lblNewLabel_3.setText("" + ba.getMonthlyTotal());
 		bpLabel1.setForeground(new Color(0, 128, 0));
 		bpLabel1.setFont(new Font("Georgia", Font.PLAIN, 35));
 		bpLabel1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -64,7 +65,6 @@ public class GotBroke {
 		budgetPage.add(bpLabel1);
 		
 		JLabel bpLabel2 = new JLabel();
-		//lblNewLabel_3.setText("" + ba.getDesiredSavings());
 		bpLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		bpLabel2.setForeground(new Color(0, 128, 0));
 		bpLabel2.setFont(new Font("Georgia", Font.PLAIN, 35));
@@ -74,20 +74,12 @@ public class GotBroke {
 		JButton btnNewButton2 = new JButton("NEXT");
 		btnNewButton2.addActionListener(e -> 
 		{
-			/*
-			userName = ((HomeScreen) homeScreen).getName();
-			budgetMonth = ((HomeScreen) homeScreen).getMonth();
-			System.out.println(userName);
-			System.out.println(budgetMonth);
-			*/
 			ba.setMonthlyTotal(((IncomePage) incomePage).getTxtSdasda().getText());
 			ba.setDesiredSavings(((IncomePage) incomePage).getTextField().getText());
 			
 			incomePage.setVisible(false);
-			//bpLabel1.setText("" + ((IncomePage) incomePage).getBudgetAmount().getMonthlyTotal());
-			//bpLabel2.setText("" + ((IncomePage) incomePage).getBudgetAmount().getDesiredSavings());
-			bpLabel1.setText("" + ba.getMonthlyTotal());
-			bpLabel2.setText("" + ba.getDesiredSavings());
+			bpLabel1.setText("" + df.format(ba.getMonthlyTotal()));
+			bpLabel2.setText("" + df.format(ba.getDesiredSavings()));
 			budgetPage.revalidate();
 			budgetPage.repaint();
 			budgetPage.setVisible(true);
@@ -111,11 +103,9 @@ public class GotBroke {
 		btnNewButton4.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		btnNewButton4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//bpLabel1.setText("" + ((IncomePage) incomePage).getBudgetAmount().getMonthlyTotal());
-				//bpLabel2.setText("" + ((IncomePage) incomePage).getBudgetAmount().getDesiredSavings());
 				ba.withdraw(((ExpensePage) expensePage).getTextField2().getText());
-				bpLabel1.setText("" + ba.getMonthlyTotal());
-				bpLabel2.setText("" + ba.getDesiredSavings());
+				bpLabel1.setText("" + df.format(ba.getMonthlyTotal()));
+				bpLabel2.setText("" + df.format(ba.getDesiredSavings()));
 				budgetPage.revalidate();
 				budgetPage.repaint();
 				budgetPage.setVisible(true);
@@ -137,12 +127,10 @@ public class GotBroke {
 	
 	public void setName(String _name) {
 		userName = _name;
-		//System.out.println(userName);
 	}
 	
 	public void setMonth(String _month) {
 		budgetMonth = _month;
-		//System.out.println(budgetMonth);
 	}
 
 }
