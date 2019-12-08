@@ -4,19 +4,10 @@ public class Expense
 	private String expenseName;
 	private double expenseAmount;
 	
-	/*
-	public Expense(String expenseType, String expenseName, double expenseAmount) 
-	{
-		this.expenseType = expenseType; 
-		this.expenseName = expenseName; 
-		this.expenseAmount = expenseAmount;
-	}
-	*/
-	
+
 	public void setExpenseType(String _eType)
 	{
 		expenseType = _eType;
-		System.out.println(expenseType);
 	}
 	
 	public void setExpenseName(String _eName)
@@ -28,6 +19,7 @@ public class Expense
 	public void setExpenseAmount(String _eAmount)
 	{
 		expenseAmount = Double.parseDouble(_eAmount);
+		System.out.println(expenseAmount);
 	}
 	
 	public String getExpenseType()
@@ -40,9 +32,14 @@ public class Expense
 		return expenseName;
 	}
 	
-	public double expenseAmount()
+	public double getExpenseAmount()
 	{
 		return expenseAmount;
 	}
 	
+	@Override 
+	public String toString()
+	{
+		return new String(expenseType + ": " + expenseName + " " + expenseAmount); 
+	}
 }
