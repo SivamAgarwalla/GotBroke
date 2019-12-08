@@ -71,7 +71,7 @@ public class ExpensePage extends JPanel {
 		textField1.setColumns(20);
 		
 		textField2 = new JTextField();
-	/*
+	/* 
 		textField2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event)
 			{
