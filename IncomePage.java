@@ -6,9 +6,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 public class IncomePage extends JPanel {
 
@@ -21,12 +19,13 @@ public class IncomePage extends JPanel {
 		setBorder(new LineBorder(new Color(0, 128, 0), 3));
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Income");
-		lblNewLabel.setForeground(new Color(0, 100, 0));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 48));
-		lblNewLabel.setBounds(32, 24, 196, 72);
-		add(lblNewLabel);
+		//IncomePage Header
+		JLabel incomeHeader = new JLabel("Income");
+		incomeHeader.setForeground(new Color(0, 100, 0));
+		incomeHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		incomeHeader.setFont(new Font("Georgia", Font.BOLD, 48));
+		incomeHeader.setBounds(32, 24, 196, 72);
+		add(incomeHeader);
 		
 		JTextArea txtrEnterYourTotal = new JTextArea();
 		txtrEnterYourTotal.setForeground(new Color(0, 128, 0));
@@ -39,68 +38,37 @@ public class IncomePage extends JPanel {
 		txtrEnterYourTotal.setBounds(37, 97, 244, 53);
 		add(txtrEnterYourTotal);
 		
+		//label for monthly income
 		JLabel lblNewLabel_1 = new JLabel("MONTHLY INCOME:");
 		lblNewLabel_1.setForeground(new Color(0, 100, 0));
 		lblNewLabel_1.setFont(new Font("Georgia", Font.PLAIN, 18));
 		lblNewLabel_1.setBounds(37, 213, 191, 16);
 		add(lblNewLabel_1);
 		
+		//label for desired savings
 		JLabel lblNewLabel_2 = new JLabel("DESIRED SAVINGS:");
 		lblNewLabel_2.setForeground(new Color(0, 100, 0));
 		lblNewLabel_2.setFont(new Font("Georgia", Font.PLAIN, 18));
 		lblNewLabel_2.setBounds(37, 274, 183, 16);
 		add(lblNewLabel_2);
 		
+		//textField for income 
 		txtSdasda = new JTextField();
-		/*
-		txtSdasda.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event)
-			{
-				ba.setMonthlyTotal(txtSdasda.getText());
-				System.out.println(txtSdasda.getText());
-			}
-		});
-		*/
 		txtSdasda.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		txtSdasda.setHorizontalAlignment(SwingConstants.LEFT);
 		txtSdasda.setBounds(218, 209, 130, 26);
 		add(txtSdasda);
 		txtSdasda.setColumns(20);
 		
+		//textField for savings
 		textField = new JTextField();
-		/*
-		textField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event)
-			{
-				ba.setDesiredSavings(textField.getText());
-				System.out.println(textField.getText());
-			}
-		});
-		*/
 		textField.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.setBounds(218, 270, 130, 26);
 		add(textField);
 		textField.setColumns(20);
-		
-		/*
-		JButton btnNewButton = new JButton("NEXT");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setForeground(new Color(0, 100, 0));
-		btnNewButton.setBounds(546, 394, 117, 29);
-		add(btnNewButton);
-		*/	
 	}
 	
-	/*
-	public BudgetAmount getBudgetAmount()
-	{
-		return ba;
-	}
-	*/
 	
 	public JTextField getTxtSdasda()
 	{
