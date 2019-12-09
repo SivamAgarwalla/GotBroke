@@ -18,8 +18,8 @@ public class ExpenseHistory extends JPanel {
 		JLabel lblNewLabel = new JLabel("Expense Report");
 		lblNewLabel.setForeground(new Color(0, 100, 0));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 34));
-		lblNewLabel.setBounds(20, 20, 297, 47);
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 25));
+		lblNewLabel.setBounds(20, 25, 297, 47);
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("TOTAL INCOME:");
