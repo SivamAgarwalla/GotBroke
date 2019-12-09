@@ -24,7 +24,7 @@ public class ExpensePage extends JPanel {
 
 	public ExpensePage() {
 		expense = new Expense();
-		//ba = IncomePage.getBudgetAmount();
+		
 		setBorder(new LineBorder(new Color(0, 128, 0), 3));
 		setLayout(null);
 		
@@ -54,54 +54,18 @@ public class ExpensePage extends JPanel {
 		add(lblNewLabel_3);
 		
 		textField1 = new JTextField();
-		
-		/* 
-		 textField1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event)
-			{
-				expense.setExpenseName(textField1.getText());
-			}
-		});
-		 */ 
 		textField1.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
-		
 		textField1.setHorizontalAlignment(SwingConstants.LEFT);
 		textField1.setBounds(210, 204, 153, 26);
 		add(textField1);
 		textField1.setColumns(20);
 		
 		textField2 = new JTextField();
-	/* 
-		textField2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event)
-			{
-				expense.setExpenseAmount(textField2.getText());
-				System.out.println(getExpense());
-			}
-		});
-	*/
 		textField2.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		textField2.setHorizontalAlignment(SwingConstants.LEFT);
 		textField2.setBounds(210, 303, 153, 26);
 		add(textField2);
 		textField2.setColumns(20);
-		
-		
-		/*
-		JButton btnNewButton4 = new JButton("FINISH");
-		btnNewButton4.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		btnNewButton4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//budgetPage.setVisible(true);
-				//expensePage.setVisible(false);
-				
-			}
-		});
-		btnNewButton4.setForeground(new Color(0, 100, 0));
-		btnNewButton4.setBounds(269, 368, 127, 42);
-		//expensePage.add(btnNewButton4);
-		add(btnNewButton4);
-		*/
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setMaximumRowCount(7);
