@@ -1,28 +1,22 @@
 public class BudgetAmount 
 {
-	private double MONTHLY_SPENDING;
+	private double income;
 	private double monthlyTotal;
-	private double MONTHLY_SAVING;
+	private double initialSavings;
 	private double desiredSavings;
-	private String errorMessage;
+	private String errorMessage = null; 
 	
 	
 	public void setMonthlyTotal(String _amount)
 	{
-		double income = Double.parseDouble(_amount);
-		System.out.println(income);
-		MONTHLY_SPENDING = income - MONTHLY_SAVING; 
-		monthlyTotal = MONTHLY_SPENDING; 
-		System.out.println("" + monthlyTotal);
+		income = Double.parseDouble(_amount);
+		monthlyTotal = income - initialSavings;
 	}
 	
 	public void setDesiredSavings(String _savings)
 	{
-		double save = Double.parseDouble(_savings);
-		System.out.println(save);
-		MONTHLY_SAVING = save;
-		desiredSavings = save;
-		System.out.println("" + desiredSavings);
+		initialSavings = Double.parseDouble(_savings);
+		desiredSavings = initialSavings; 
 	}
 	
 	public void withdraw(String _expenseAmount)
@@ -49,24 +43,22 @@ public class BudgetAmount
 	
 	public double getConstantSpendAmount()
 	{
-		return MONTHLY_SPENDING;
+		return income;
 	}
 	
 	public double getConstantSaveAmount()
 	{
-		return MONTHLY_SAVING;
+		return initialSavings;
 	}
 	
 	
 	public double getMonthlyTotal()
 	{
-		System.out.println(monthlyTotal);
 		return monthlyTotal;
 	}
 	
 	public double getDesiredSavings()
 	{
-		System.out.println(desiredSavings);
 		return desiredSavings;
 		
 	}
