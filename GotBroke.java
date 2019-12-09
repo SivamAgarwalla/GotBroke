@@ -62,6 +62,10 @@ public class GotBroke {
 		JButton beginButton = new JButton("BEGIN");
 		beginButton.addActionListener(e -> 
 		{
+			userName = ((HomeScreen) homeScreen).getNameField().getText(); 
+			System.out.println(userName);
+			budgetMonth = ((HomeScreen) homeScreen).getMonthField().getText(); 
+			System.out.println(budgetMonth);
 			homeScreen.setVisible(false);
 			incomePage.setVisible(true);
 		});
@@ -136,7 +140,7 @@ public class GotBroke {
 					gotBrokeLabel.setForeground(Color.RED);
 					gotBrokeLabel.setFont(new Font("Lucida Grande", Font.BOLD, 30));
 					gotBrokeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-					gotBrokeLabel.setBounds(220, 292, 304, 72);
+					gotBrokeLabel.setBounds(180, 292, 304, 72);
 					budgetPage.add(gotBrokeLabel);
 				}
 				//set all values for initialized expense 
@@ -173,6 +177,14 @@ public class GotBroke {
 		finishButton.setBounds(269, 368, 127, 42);
 		expensePage.add(finishButton);
 		
+		//labels for final monthly expense report: username & month 
+		JLabel nameMonthLabel = new JLabel();
+		nameMonthLabel.setForeground(new Color(0, 100, 0));
+		nameMonthLabel.setFont(new Font("Georgia", Font.BOLD, 25));
+		nameMonthLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		nameMonthLabel.setBounds(20, 0, 297, 47);
+		expenseHistory.add(nameMonthLabel);
+		
 		//labels for final monthly expense report for users including initial and remaining income and savings. 
 		JLabel incomeLabel = new JLabel();
 		incomeLabel.setForeground(new Color(0, 100, 0));
@@ -208,12 +220,15 @@ public class GotBroke {
 		printButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				budgetPage.setVisible(false);
+				String nameMonth = userName + "'s " + budgetMonth; 
+				System.out.println(nameMonth);
+				nameMonthLabel.setText(nameMonth);
 				for(int i = 0; i < expenseList.size(); i++) {
 					JLabel expenseLabel = new JLabel();
 					expenseLabel.setHorizontalAlignment(SwingConstants.LEFT);
 					expenseLabel.setForeground(new Color(0, 0, 0));
 					expenseLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
-					expenseLabel.setBounds(370, 20 + (20*(i)), 250, 30);
+					expenseLabel.setBounds(370, 30 + (20*(i)), 250, 30);
 					expenseLabel.setText(expenseList.get(i));
 					expenseHistory.add(expenseLabel);
 				}
@@ -253,6 +268,19 @@ public class GotBroke {
 		printButton.setBounds(507, 343, 146, 61);
 		budgetPage.add(printButton);
 		
+		//button to move from report back to budgetPage
+		JButton backButton = new JButton("GO BACK");
+		backButton.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
+		backButton.addActionListener(e -> 
+		{
+			expenseHistory.setVisible(false);
+			budgetPage.setVisible(true);
+		});
+		backButton.setForeground(new Color(0, 100, 0));
+		backButton.setBounds(507, 343, 146, 61);
+		expenseHistory.add(backButton);
+		
+		
 		mFrame.add(bsPanel);
 		cl.show(bsPanel, "bs");
 		homeScreen.setVisible(true);
@@ -262,14 +290,6 @@ public class GotBroke {
 		mFrame.setVisible(true);
 		
 		
-	}
-	
-	public void setName(String _name) {
-		userName = _name;
-	}
-	
-	public void setMonth(String _month) {
-		budgetMonth = _month;
-	}
+	}	
 
 }
