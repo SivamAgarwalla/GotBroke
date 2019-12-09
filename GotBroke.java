@@ -28,6 +28,8 @@ public class GotBroke {
 	private static DecimalFormat df = new DecimalFormat("0.00");
 	private static ArrayList<String> expenseList; 
 	private static Expense expense; 
+	private static double[] categoryTotals = new double[6];
+	private static double totalSpending = 0.0;
 	
 	public static void main(String[] args)
 	{
@@ -124,7 +126,26 @@ public class GotBroke {
 				bpLabel1.setText("" + df.format(ba.getMonthlyTotal()));
 				bpLabel2.setText("" + df.format(ba.getDesiredSavings()));
 				//System.out.println(((ExpensePage) expensePage).getExpense()); 
-				expense.setExpenseType(((ExpensePage) expensePage).getType());
+				String expenseType = ((ExpensePage) expensePage).getType();
+				expense.setExpenseType(expenseType);
+				if(expenseType.equals("Housing"))
+					categoryTotals[0] += Double.parseDouble(((ExpensePage) expensePage).getTextField2().getText());
+				
+				else if(expenseType.equals("Transportation"))
+					categoryTotals[1] += Double.parseDouble(((ExpensePage) expensePage).getTextField2().getText());
+					
+				else if(expenseType.equals("Recreational"))
+					categoryTotals[2] += Double.parseDouble(((ExpensePage) expensePage).getTextField2().getText());
+					
+				else if(expenseType.equals("Education"))
+					categoryTotals[3] += Double.parseDouble(((ExpensePage) expensePage).getTextField2().getText());
+					
+				else if(expenseType.equals("Medical"))
+					categoryTotals[4] += Double.parseDouble(((ExpensePage) expensePage).getTextField2().getText());
+					
+				else if(expenseType.equals("Food"))
+					categoryTotals[5] += Double.parseDouble(((ExpensePage) expensePage).getTextField2().getText());
+					
 				expense.setExpenseName(((ExpensePage) expensePage).getTextField1().getText()); 
 				expense.setExpenseAmount(((ExpensePage) expensePage).getTextField2().getText());
 				System.out.println(expense.toString());
@@ -140,8 +161,36 @@ public class GotBroke {
 		expensePage.add(btnNewButton4);
 		
 	
+		JLabel incomeLabel = new JLabel();
+		incomeLabel.setForeground(new Color(0, 100, 0));
+		incomeLabel.setFont(new Font("Georgia", Font.PLAIN, 17));
+		incomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		incomeLabel.setBounds(210, 76, 145, 19);
+		expenseHistory.add(incomeLabel);
+		
+		JLabel dSavingLabel = new JLabel();
+		dSavingLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		dSavingLabel.setForeground(new Color(0, 100, 0));
+		dSavingLabel.setFont(new Font("Georgia", Font.PLAIN, 17));
+		dSavingLabel.setBounds(210, 104, 145, 19);
+		expenseHistory.add(dSavingLabel);
+		
+		JLabel totalSpendLabel = new JLabel();
+		totalSpendLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		totalSpendLabel.setForeground(new Color(255, 0, 0));
+		totalSpendLabel.setFont(new Font("Georgia", Font.PLAIN, 19));
+		totalSpendLabel.setBounds(240, 303, 145, 30);
+		expenseHistory.add(totalSpendLabel);
+		
+		JLabel endSaveLabel = new JLabel();
+		endSaveLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		endSaveLabel.setForeground(new Color(0, 100, 0));
+		endSaveLabel.setFont(new Font("Georgia", Font.PLAIN, 22));
+		endSaveLabel.setBounds(240, 350, 145, 40);
+		expenseHistory.add(endSaveLabel);
+		
 		//button to move from budgetPage to expenseHistory
-		JButton printButton = new JButton("Print Expense Report");
+		JButton printButton = new JButton("VIEW REPORT");
 		printButton.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		printButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -149,12 +198,40 @@ public class GotBroke {
 				for(int i = 0; i < expenseList.size(); i++) {
 					JLabel expenseLabel = new JLabel();
 					expenseLabel.setHorizontalAlignment(SwingConstants.LEFT);
-					expenseLabel.setForeground(new Color(0, 128, 0));
-					expenseLabel.setFont(new Font("Georgia", Font.PLAIN, 35));
-					expenseLabel.setBounds(27, 70 + (50*(i +1)), 500, 30);
+					expenseLabel.setForeground(new Color(0, 0, 0));
+					expenseLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+					expenseLabel.setBounds(370, 20 + (20*(i)), 250, 30);
 					expenseLabel.setText(expenseList.get(i));
 					expenseHistory.add(expenseLabel);
-					System.out.println(expenseList.get(i));
+				}
+				
+				incomeLabel.setText("$" + df.format(ba.getConstantSpendAmount()));
+				dSavingLabel.setText("$" + df.format(ba.getConstantSaveAmount()));
+				
+				for(int j = 0; j < categoryTotals.length; j++)
+				{
+					totalSpending += categoryTotals[j];
+				}
+				
+				totalSpendLabel.setText("$ " + df.format(totalSpending));
+				
+				if(ba.getConstantSpendAmount() > totalSpending)
+				{
+					endSaveLabel.setText("$ " + df.format((ba.getConstantSpendAmount() - totalSpending)));
+				}
+				else
+					endSaveLabel.setText("$ 0.00");
+				
+				
+				for(int i = 0; i < categoryTotals.length; i++)
+				{
+					JLabel bpLabel = new JLabel();
+					bpLabel.setForeground(new Color(255, 0, 0));
+					bpLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+					bpLabel.setHorizontalAlignment(SwingConstants.CENTER);
+					bpLabel.setBounds(200, 159 + (21*i), 140, 16);
+					bpLabel.setText("$ " + df.format(categoryTotals[i]));
+					expenseHistory.add(bpLabel);
 				}
 
 				expenseHistory.setVisible(true);

@@ -1,12 +1,11 @@
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,19 +27,6 @@ public class HomeScreen extends JPanel {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(157, 105, 324, 112);
 		add(lblNewLabel);
-
-		/*
-		JButton btnNewButton = new JButton("BEGIN");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-		btnNewButton.setForeground(new Color(0, 128, 0));
-		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnNewButton.setBounds(547, 395, 117, 29);
-		add(btnNewButton);
-		 */
 
 		JLabel lblNewLabel_1 = new JLabel("NAME:");
 		lblNewLabel_1.setForeground(new Color(0, 100, 0));
@@ -81,7 +67,18 @@ public class HomeScreen extends JPanel {
 		textField.setBounds(299, 278, 130, 26);
 		add(textField);
 		textField.setColumns(20);
-
+		
+		JTextArea txtrEnterYourTotal = new JTextArea();
+		txtrEnterYourTotal.setEditable(false);
+		txtrEnterYourTotal.setForeground(new Color(0, 128, 0));
+		txtrEnterYourTotal.setFont(new Font("Georgia", Font.PLAIN, 13));
+		txtrEnterYourTotal.setBackground(new Color(238, 238, 238));
+		txtrEnterYourTotal.setWrapStyleWord(true);
+		txtrEnterYourTotal.setLineWrap(true);
+		txtrEnterYourTotal.setColumns(4);
+		txtrEnterYourTotal.setText("Budgeting made easy. Input your name and month and press enter.");
+		txtrEnterYourTotal.setBounds(193, 189, 250, 38);
+		add(txtrEnterYourTotal);
 	}
 
 	public String getName()

@@ -35,8 +35,8 @@ public class IncomePage extends JPanel {
 		txtrEnterYourTotal.setWrapStyleWord(true);
 		txtrEnterYourTotal.setLineWrap(true);
 		txtrEnterYourTotal.setColumns(4);
-		txtrEnterYourTotal.setText("Enter your total monthly income and the amount of it that you would like to save.");
-		txtrEnterYourTotal.setBounds(37, 97, 277, 38);
+		txtrEnterYourTotal.setText("Enter your total monthly income and the amount of it that you would like to save. (Input numbers)");
+		txtrEnterYourTotal.setBounds(37, 97, 244, 53);
 		add(txtrEnterYourTotal);
 		
 		JLabel lblNewLabel_1 = new JLabel("MONTHLY INCOME:");

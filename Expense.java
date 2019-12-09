@@ -27,7 +27,7 @@ public class Expense
 		return expenseType;
 	}
 	
-	public String getExpensename()
+	public String getExpenseName()
 	{
 		return expenseName;
 	}
@@ -40,6 +40,6 @@ public class Expense
 	@Override 
 	public String toString()
 	{
-		return new String(expenseType + ": " + expenseName + " " + expenseAmount); 
+		return new String("[" + expenseType + "] " + expenseName + ": $" + expenseAmount); 
 	}
 }

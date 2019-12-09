@@ -49,7 +49,6 @@ public class BudgetAmount
 	
 	public double getConstantSpendAmount()
 	{
-		System.out.println("monthly spending: " + MONTHLY_SPENDING);
 		return MONTHLY_SPENDING;
 	}
 	

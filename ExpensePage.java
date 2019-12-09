@@ -137,6 +137,6 @@ public class ExpensePage extends JPanel {
 	
 	public String getExpense()
 	{
-		return new String(expense.getExpenseType() + ": " + expense.getExpensename() + " " + expense.getExpenseAmount()); 
+		return new String("[" + expense.getExpenseType() + "] " + expense.getExpenseName() + ": $" + expense.getExpenseAmount());
 	}
 }
