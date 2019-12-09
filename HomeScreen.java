@@ -47,7 +47,7 @@ public class HomeScreen extends JPanel {
 		add(txtSdasda);
 		txtSdasda.setColumns(20);
 
-		textField = new JTextField();*/ 
+		textField = new JTextField(); 
 		textField.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.setBounds(299, 278, 130, 26);
