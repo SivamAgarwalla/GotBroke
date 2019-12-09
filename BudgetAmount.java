@@ -29,14 +29,19 @@ public class BudgetAmount
 		else
 		{
 			double remaining = Math.abs((monthlyTotal-expenseAmount));
-			if(desiredSavings <= remaining)
+			
+			/*
+			if(desiredSavings < remaining) {
 				errorMessage = "You GOT BROKE!";
+			}
 			else
 			{
+			*/
 				desiredSavings -= remaining;
 				expenseAmount -= remaining; 
 				monthlyTotal -= expenseAmount; 
-			}
+				
+			//}
 		}
 		
 	}

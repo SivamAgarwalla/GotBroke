@@ -56,5 +56,6 @@ public class BudgetPage extends JPanel {
 		lblNewLabel_22.setFont(new Font("Georgia", Font.BOLD, 40));
 		lblNewLabel_22.setBounds(321, 240, 36, 53);
 		add(lblNewLabel_22);
+		
 	}
 }

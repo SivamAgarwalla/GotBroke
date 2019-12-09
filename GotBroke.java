@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,12 +27,15 @@ public class GotBroke {
 	private static Expense expense; 
 	private static double[] categoryTotals = new double[6];
 	private static double totalSpending = 0.0;
+	private static ArrayList<String> expenseList; 
 	
 	public static void main(String[] args)
 	{
 	
 		//initialize budget container class
 		BudgetAmount ba = new BudgetAmount();
+		//initialize arraylist of total expenses 
+		expenseList = new ArrayList<>(); 
 		
 		JFrame mFrame = new JFrame("CardLayout GotBroke");
 		cl = new CardLayout(5, 5);
@@ -122,7 +126,19 @@ public class GotBroke {
 			public void actionPerformed(ActionEvent e) {
 				ba.withdraw(((ExpensePage) expensePage).getTextField2().getText());
 				monthlyIncomeLabel.setText("" + df.format(ba.getMonthlyTotal()));
-				initialSavingsLabel.setText("" + df.format(ba.getDesiredSavings()));
+				if(ba.getDesiredSavings() >= 0)
+					initialSavingsLabel.setText("" + df.format(ba.getDesiredSavings()));
+				else
+				{
+					initialSavingsLabel.setText("" + df.format(ba.getDesiredSavings()));
+					initialSavingsLabel.setForeground(new Color(255, 0, 0));
+					JLabel gotBrokeLabel = new JLabel("YOU GOT BROKE!");
+					gotBrokeLabel.setForeground(Color.RED);
+					gotBrokeLabel.setFont(new Font("Lucida Grande", Font.BOLD, 30));
+					gotBrokeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+					gotBrokeLabel.setBounds(220, 292, 304, 72);
+					budgetPage.add(gotBrokeLabel);
+				}
 				//set all values for initialized expense 
 				String expenseType = ((ExpensePage) expensePage).getType();
 				expense.setExpenseType(expenseType);
@@ -146,6 +162,7 @@ public class GotBroke {
 					
 				expense.setExpenseName(((ExpensePage) expensePage).getTextField1().getText()); 
 				expense.setExpenseAmount(((ExpensePage) expensePage).getTextField2().getText());
+				expenseList.add(expense.toString());
 				budgetPage.revalidate();
 				budgetPage.repaint();
 				budgetPage.setVisible(true);
@@ -191,6 +208,15 @@ public class GotBroke {
 		printButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				budgetPage.setVisible(false);
+				for(int i = 0; i < expenseList.size(); i++) {
+					JLabel expenseLabel = new JLabel();
+					expenseLabel.setHorizontalAlignment(SwingConstants.LEFT);
+					expenseLabel.setForeground(new Color(0, 0, 0));
+					expenseLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+					expenseLabel.setBounds(370, 20 + (20*(i)), 250, 30);
+					expenseLabel.setText(expenseList.get(i));
+					expenseHistory.add(expenseLabel);
+				}
 				//display initial values from user
 				incomeLabel.setText("$" + df.format(ba.getConstantSpendAmount()));
 				dSavingLabel.setText("$" + df.format(ba.getConstantSaveAmount()));
