@@ -41,27 +41,13 @@ public class HomeScreen extends JPanel {
 		add(lblNewLabel_2);
 
 		txtSdasda = new JTextField();
-		txtSdasda.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event)
-			{
-				gb.setName(txtSdasda.getText());
-			}
-		});
-
 		txtSdasda.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		txtSdasda.setHorizontalAlignment(SwingConstants.LEFT);
 		txtSdasda.setBounds(299, 250, 130, 26);
 		add(txtSdasda);
 		txtSdasda.setColumns(20);
 
-		textField = new JTextField();
-		textField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event)
-			{
-				gb.setMonth(textField.getText());
-			}
-		});
-
+		textField = new JTextField();*/ 
 		textField.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.setBounds(299, 278, 130, 26);
@@ -76,19 +62,19 @@ public class HomeScreen extends JPanel {
 		txtrEnterYourTotal.setWrapStyleWord(true);
 		txtrEnterYourTotal.setLineWrap(true);
 		txtrEnterYourTotal.setColumns(4);
-		txtrEnterYourTotal.setText("Budgeting made easy. Input your name and month and press enter.");
+		txtrEnterYourTotal.setText("Budgeting made easy. Input your name and month and press begin.");
 		txtrEnterYourTotal.setBounds(193, 189, 250, 38);
 		add(txtrEnterYourTotal);
 	}
 
-	public String getName()
+	public JTextField getNameField()
 	{
-		return txtSdasda.getText();
+		return txtSdasda;
 	}
 
-	public String getMonth()
+	public JTextField getMonthField()
 	{
-		return textField.getText();
+		return textField;
 	}
 
 }
