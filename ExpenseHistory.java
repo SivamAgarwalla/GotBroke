@@ -14,7 +14,8 @@ public class ExpenseHistory extends JPanel {
 		setBorder(new LineBorder(new Color(0, 128, 0), 3));
 		setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Expense History");
+		//label to indicate Expense History Report JPanel 
+		JLabel lblNewLabel = new JLabel("Expense Report");
 		lblNewLabel.setForeground(new Color(0, 100, 0));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 34));
@@ -39,58 +40,44 @@ public class ExpenseHistory extends JPanel {
 		lblNewLabel_3.setBounds(30, 131, 191, 16);
 		add(lblNewLabel_3);
 		
-		JLabel label = new JLabel("HOUSING:");
-		label.setForeground(new Color(255, 0, 0));
-		label.setFont(new Font("Georgia", Font.PLAIN, 16));
-		label.setBounds(40, 159, 164, 16);
-		add(label);
+		//all category labels for expense history report
+		JLabel housingCategory = new JLabel("HOUSING:");
+		housingCategory.setForeground(new Color(255, 0, 0));
+		housingCategory.setFont(new Font("Georgia", Font.PLAIN, 16));
+		housingCategory.setBounds(40, 159, 164, 16);
+		add(housingCategory);
 		
-		JLabel label_1 = new JLabel("TRANSPORTATION:");
-		label_1.setForeground(new Color(255, 0, 0));
-		label_1.setFont(new Font("Georgia", Font.PLAIN, 16));
-		label_1.setBounds(40, 180, 164, 16);
-		add(label_1);
+		JLabel transportationLabel = new JLabel("TRANSPORTATION:");
+		transportationLabel.setForeground(new Color(255, 0, 0));
+		transportationLabel.setFont(new Font("Georgia", Font.PLAIN, 16));
+		transportationLabel.setBounds(40, 180, 164, 16);
+		add(transportationLabel);
 		
-		JLabel label_2 = new JLabel("RECREATIONAL:");
-		label_2.setForeground(new Color(255, 0, 0));
-		label_2.setFont(new Font("Georgia", Font.PLAIN, 16));
-		label_2.setBounds(40, 201, 164, 16);
-		add(label_2);
+		JLabel recLabel = new JLabel("RECREATIONAL:");
+		recLabel.setForeground(new Color(255, 0, 0));
+		recLabel.setFont(new Font("Georgia", Font.PLAIN, 16));
+		recLabel.setBounds(40, 201, 164, 16);
+		add(recLabel);
 		
-		JLabel label_3 = new JLabel("EDUCATION:");
-		label_3.setForeground(new Color(255, 0, 0));
-		label_3.setFont(new Font("Georgia", Font.PLAIN, 16));
-		label_3.setBounds(40, 222, 164, 16);
-		add(label_3);
+		JLabel educationLabel = new JLabel("EDUCATION:");
+		educationLabel.setForeground(new Color(255, 0, 0));
+		educationLabel.setFont(new Font("Georgia", Font.PLAIN, 16));
+		educationLabel.setBounds(40, 222, 164, 16);
+		add(educationLabel);
 		
-		JLabel label_4 = new JLabel("MEDICAL:");
-		label_4.setForeground(new Color(255, 0, 0));
-		label_4.setFont(new Font("Georgia", Font.PLAIN, 16));
-		label_4.setBounds(40, 243, 164, 16);
-		add(label_4);
+		JLabel medicalLabel = new JLabel("MEDICAL:");
+		medicalLabel.setForeground(new Color(255, 0, 0));
+		medicalLabel.setFont(new Font("Georgia", Font.PLAIN, 16));
+		medicalLabel.setBounds(40, 243, 164, 16);
+		add(medicalLabel);
 		
-		JLabel label_5 = new JLabel("FOOD:");
-		label_5.setForeground(new Color(255, 0, 0));
-		label_5.setFont(new Font("Georgia", Font.PLAIN, 16));
-		label_5.setBounds(40, 264, 164, 16);
-		add(label_5);
+		JLabel foodLabel = new JLabel("FOOD:");
+		foodLabel.setForeground(new Color(255, 0, 0));
+		foodLabel.setFont(new Font("Georgia", Font.PLAIN, 16));
+		foodLabel.setBounds(40, 264, 164, 16);
+		add(foodLabel);
 		
-		/*
-		JLabel bpLabel1 = new JLabel();
-		bpLabel1.setForeground(new Color(0, 100, 0));
-		bpLabel1.setFont(new Font("Georgia", Font.PLAIN, 17));
-		bpLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel1.setBounds(210, 76, 145, 19);
-		add(bpLabel1);
-		
-		JLabel label_6 = new JLabel();
-		label_6.setHorizontalAlignment(SwingConstants.CENTER);
-		label_6.setForeground(new Color(0, 100, 0));
-		label_6.setFont(new Font("Georgia", Font.PLAIN, 17));
-		label_6.setBounds(210, 104, 145, 19);
-		add(label_6);
-		*/
-		
+		//Total Spending and Savings Labels and their values
 		JLabel lblTotalSpending = new JLabel("TOTAL SPENDING:");
 		lblTotalSpending.setForeground(new Color(255, 0, 0));
 		lblTotalSpending.setFont(new Font("Georgia", Font.PLAIN, 18));
@@ -117,48 +104,5 @@ public class ExpenseHistory extends JPanel {
 		endSaveLabel.setBounds(240, 350, 145, 40);
 		add(endSaveLabel);
 		
-		/*
-		JLabel bpLabel1 = new JLabel();
-		bpLabel1.setForeground(new Color(255, 0, 0));
-		bpLabel1.setFont(new Font("Georgia", Font.PLAIN, 15));
-		bpLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel1.setBounds(200, 159, 140, 16);
-		add(bpLabel1);
-		
-		JLabel bpLabel2 = new JLabel();
-		bpLabel2.setForeground(new Color(255, 0, 0));
-		bpLabel2.setFont(new Font("Georgia", Font.PLAIN, 15));
-		bpLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel2.setBounds(200, 178, 140, 16);
-		add(bpLabel2);
-		
-		JLabel bpLabel3 = new JLabel();
-		bpLabel3.setForeground(new Color(255, 0, 0));
-		bpLabel3.setFont(new Font("Georgia", Font.PLAIN, 15));
-		bpLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel3.setBounds(200, 199, 140, 16);
-		add(bpLabel3);
-		
-		JLabel bpLabel4 = new JLabel();
-		bpLabel4.setForeground(new Color(255, 0, 0));
-		bpLabel4.setFont(new Font("Georgia", Font.PLAIN, 15));
-		bpLabel4.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel4.setBounds(200, 220, 140, 16);
-		add(bpLabel4);
-		
-		JLabel bpLabel5 = new JLabel();
-		bpLabel5.setForeground(new Color(255, 0, 0));
-		bpLabel5.setFont(new Font("Georgia", Font.PLAIN, 15));
-		bpLabel5.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel5.setBounds(200, 241, 140, 16);
-		add(bpLabel5);
-		
-		JLabel bpLabel6 = new JLabel();
-		bpLabel6.setForeground(new Color(255, 0, 0));
-		bpLabel6.setFont(new Font("Georgia", Font.PLAIN, 15));
-		bpLabel6.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel6.setBounds(200, 262, 140, 16);
-		add(bpLabel6);
-		*/
 	}
 }
