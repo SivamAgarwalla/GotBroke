@@ -4,14 +4,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 public class GotBroke {
@@ -26,15 +23,14 @@ public class GotBroke {
 	private static String userName;
 	private static String budgetMonth;
 	private static DecimalFormat df = new DecimalFormat("0.00");
-	private static ArrayList<String> expenseList; 
 	private static Expense expense; 
 	private static double[] categoryTotals = new double[6];
 	private static double totalSpending = 0.0;
 	
 	public static void main(String[] args)
 	{
-		//initialize arrayList
-		expenseList = new ArrayList<>(); 
+	
+		//initialize budget container class
 		BudgetAmount ba = new BudgetAmount();
 		
 		JFrame mFrame = new JFrame("CardLayout GotBroke");
@@ -42,90 +38,92 @@ public class GotBroke {
 		
 		//add all the panels to the cardlayout
 		bsPanel = new JPanel(cl);
-		
+		//entry page for all users, includes name & month
 		homeScreen = new HomeScreen();
 		bsPanel.add(homeScreen, "HomeScreen");
-		
+		//2nd page, includes monthlyIncome and desiredSavings
 		incomePage = new IncomePage();
 		bsPanel.add(incomePage, "IncomePage");
-		
+		//3rd page, displays dynamic income & savings, add expense & print report buttons
 		budgetPage = new BudgetPage();
 		bsPanel.add(budgetPage, "BudgetPage");
-		
+		//4th page, allows user to add an expense, will adjust budget and report page
 		expensePage = new ExpensePage();
 		bsPanel.add(expensePage, "ExpensePage");
-		
+		//5th page, displays final report of user's data
 		expenseHistory = new ExpenseHistory(); 
 		bsPanel.add(expenseHistory, "ExpenseHistory"); 
 		
 		//button to move from homeScreen to incomePage
-		JButton btnNewButton = new JButton("BEGIN");
-		btnNewButton.addActionListener(e -> 
+		JButton beginButton = new JButton("BEGIN");
+		beginButton.addActionListener(e -> 
 		{
 			homeScreen.setVisible(false);
 			incomePage.setVisible(true);
 		});
-		btnNewButton.setForeground(new Color(0, 128, 0));
-		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnNewButton.setBounds(547, 395, 117, 29);
-		homeScreen.add(btnNewButton);
+		beginButton.setForeground(new Color(0, 128, 0));
+		beginButton.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		beginButton.setBounds(547, 395, 117, 29);
+		homeScreen.add(beginButton);
 		
 		
-		//Labels for the BudgetPage
-		JLabel bpLabel1 = new JLabel();
-		bpLabel1.setForeground(new Color(0, 128, 0));
-		bpLabel1.setFont(new Font("Georgia", Font.PLAIN, 35));
-		bpLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel1.setBounds(237, 147, 247, 46);
-		budgetPage.add(bpLabel1);
+		//Labels for the BudgetPage of monthly income and desired savings
+		JLabel monthlyIncomeLabel = new JLabel();
+		monthlyIncomeLabel.setForeground(new Color(0, 128, 0));
+		monthlyIncomeLabel.setFont(new Font("Georgia", Font.PLAIN, 35));
+		monthlyIncomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		monthlyIncomeLabel.setBounds(237, 147, 247, 46);
+		budgetPage.add(monthlyIncomeLabel);
 		
-		JLabel bpLabel2 = new JLabel();
-		bpLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		bpLabel2.setForeground(new Color(0, 128, 0));
-		bpLabel2.setFont(new Font("Georgia", Font.PLAIN, 35));
-		bpLabel2.setBounds(320, 244, 247, 46);
-		budgetPage.add(bpLabel2);
+		JLabel initialSavingsLabel = new JLabel();
+		initialSavingsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		initialSavingsLabel.setForeground(new Color(0, 128, 0));
+		initialSavingsLabel.setFont(new Font("Georgia", Font.PLAIN, 35));
+		initialSavingsLabel.setBounds(320, 244, 247, 46);
+		budgetPage.add(initialSavingsLabel);
 		
 		//button to move from incomePage to budgetPage, sets initial Income and Savings
-		JButton btnNewButton2 = new JButton("NEXT");
-		btnNewButton2.addActionListener(e -> 
+		JButton nextButton = new JButton("NEXT");
+		nextButton.addActionListener(e -> 
 		{
-			ba.setMonthlyTotal(((IncomePage) incomePage).getTxtSdasda().getText());
 			ba.setDesiredSavings(((IncomePage) incomePage).getTextField().getText());
+			ba.setMonthlyTotal(((IncomePage) incomePage).getTxtSdasda().getText());
 			
 			incomePage.setVisible(false);
-			bpLabel1.setText("" + df.format(ba.getMonthlyTotal()));
-			bpLabel2.setText("" + df.format(ba.getDesiredSavings()));
+			monthlyIncomeLabel.setText("" + df.format(ba.getMonthlyTotal()));
+			initialSavingsLabel.setText("" + df.format(ba.getDesiredSavings()));
 			budgetPage.revalidate();
 			budgetPage.repaint();
 			budgetPage.setVisible(true);
 		});
-		btnNewButton2.setForeground(new Color(0, 100, 0));
-		btnNewButton2.setBounds(546, 394, 117, 29);
-		incomePage.add(btnNewButton2);
+		nextButton.setForeground(new Color(0, 100, 0));
+		nextButton.setBounds(546, 394, 117, 29);
+		incomePage.add(nextButton);
 		
 		//Button to move budgetPage to expensePage
-		JButton btnNewButton3 = new JButton("ADD EXPENSES");
-		btnNewButton3.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
-		btnNewButton3.addActionListener(e -> 
+		//initializes an instance of expense class
+		JButton addExpenseButton = new JButton("ADD EXPENSES");
+		addExpenseButton.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
+		addExpenseButton.addActionListener(e -> 
 		{
 			budgetPage.setVisible(false);
 			expense = new Expense(); 
 			expensePage.setVisible(true);
 		});
-		btnNewButton3.setForeground(new Color(0, 100, 0));
-		btnNewButton3.setBounds(20, 343, 146, 61);
-		budgetPage.add(btnNewButton3);
+		addExpenseButton.setForeground(new Color(0, 100, 0));
+		addExpenseButton.setBounds(20, 343, 146, 61);
+		budgetPage.add(addExpenseButton);
 		
 		//Button to calculate expense differences and move back to budgetPage
-		JButton btnNewButton4 = new JButton("FINISH");
-		btnNewButton4.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		btnNewButton4.addActionListener(new ActionListener() {
+		//builds an array that calculates expenses per category type
+		JButton finishButton = new JButton("FINISH");
+		finishButton.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		finishButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ba.withdraw(((ExpensePage) expensePage).getTextField2().getText());
-				bpLabel1.setText("" + df.format(ba.getMonthlyTotal()));
-				bpLabel2.setText("" + df.format(ba.getDesiredSavings()));
-				//System.out.println(((ExpensePage) expensePage).getExpense()); 
+				monthlyIncomeLabel.setText("" + df.format(ba.getMonthlyTotal()));
+				initialSavingsLabel.setText("" + df.format(ba.getDesiredSavings()));
+				//set all values for initialized expense 
 				String expenseType = ((ExpensePage) expensePage).getType();
 				expense.setExpenseType(expenseType);
 				if(expenseType.equals("Housing"))
@@ -148,19 +146,17 @@ public class GotBroke {
 					
 				expense.setExpenseName(((ExpensePage) expensePage).getTextField1().getText()); 
 				expense.setExpenseAmount(((ExpensePage) expensePage).getTextField2().getText());
-				System.out.println(expense.toString());
-				expenseList.add(expense.toString()); 
 				budgetPage.revalidate();
 				budgetPage.repaint();
 				budgetPage.setVisible(true);
 				expensePage.setVisible(false);
 			}
 		});
-		btnNewButton4.setForeground(new Color(0, 100, 0));
-		btnNewButton4.setBounds(269, 368, 127, 42);
-		expensePage.add(btnNewButton4);
+		finishButton.setForeground(new Color(0, 100, 0));
+		finishButton.setBounds(269, 368, 127, 42);
+		expensePage.add(finishButton);
 		
-	
+		//labels for final monthly expense report for users including initial and remaining income and savings. 
 		JLabel incomeLabel = new JLabel();
 		incomeLabel.setForeground(new Color(0, 100, 0));
 		incomeLabel.setFont(new Font("Georgia", Font.PLAIN, 17));
@@ -189,25 +185,16 @@ public class GotBroke {
 		endSaveLabel.setBounds(240, 350, 145, 40);
 		expenseHistory.add(endSaveLabel);
 		
-		//button to move from budgetPage to expenseHistory
+		//button to move from budgetPage to expenseHistory & display data about the user
 		JButton printButton = new JButton("VIEW REPORT");
 		printButton.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		printButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				budgetPage.setVisible(false);
-				for(int i = 0; i < expenseList.size(); i++) {
-					JLabel expenseLabel = new JLabel();
-					expenseLabel.setHorizontalAlignment(SwingConstants.LEFT);
-					expenseLabel.setForeground(new Color(0, 0, 0));
-					expenseLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
-					expenseLabel.setBounds(370, 20 + (20*(i)), 250, 30);
-					expenseLabel.setText(expenseList.get(i));
-					expenseHistory.add(expenseLabel);
-				}
-				
+				//display initial values from user
 				incomeLabel.setText("$" + df.format(ba.getConstantSpendAmount()));
 				dSavingLabel.setText("$" + df.format(ba.getConstantSaveAmount()));
-				
+				//calculate end results for user
 				for(int j = 0; j < categoryTotals.length; j++)
 				{
 					totalSpending += categoryTotals[j];
@@ -222,18 +209,17 @@ public class GotBroke {
 				else
 					endSaveLabel.setText("$ 0.00");
 				
-				
+				//create a new label for each category & spending
 				for(int i = 0; i < categoryTotals.length; i++)
 				{
-					JLabel bpLabel = new JLabel();
-					bpLabel.setForeground(new Color(255, 0, 0));
-					bpLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
-					bpLabel.setHorizontalAlignment(SwingConstants.CENTER);
-					bpLabel.setBounds(200, 159 + (21*i), 140, 16);
-					bpLabel.setText("$ " + df.format(categoryTotals[i]));
-					expenseHistory.add(bpLabel);
+					JLabel reportLabel = new JLabel();
+					reportLabel.setForeground(new Color(255, 0, 0));
+					reportLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+					reportLabel.setHorizontalAlignment(SwingConstants.CENTER);
+					reportLabel.setBounds(200, 159 + (21*i), 140, 16);
+					reportLabel.setText("$ " + df.format(categoryTotals[i]));
+					expenseHistory.add(reportLabel);
 				}
-
 				expenseHistory.setVisible(true);
 			}
 		});
