@@ -23,27 +23,14 @@ public class BudgetAmount
 	{
 		double expenseAmount = Double.parseDouble(_expenseAmount);
 		if(monthlyTotal >= expenseAmount)
-		{
 			monthlyTotal -= expenseAmount;
-		}
 		else
 		{
 			double remaining = Math.abs((monthlyTotal-expenseAmount));
-			
-			/*
-			if(desiredSavings < remaining) {
-				errorMessage = "You GOT BROKE!";
-			}
-			else
-			{
-			*/
-				desiredSavings -= remaining;
-				expenseAmount -= remaining; 
-				monthlyTotal -= expenseAmount; 
-				
-			//}
+			desiredSavings -= remaining;
+			expenseAmount -= remaining; 
+			monthlyTotal -= expenseAmount; 
 		}
-		
 	}
 	
 	public double getConstantSpendAmount()
