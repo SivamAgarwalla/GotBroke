@@ -273,6 +273,7 @@ public class GotBroke {
 		backButton.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		backButton.addActionListener(e -> 
 		{
+			totalSpending = 0.0;
 			expenseHistory.setVisible(false);
 			budgetPage.setVisible(true);
 		});
